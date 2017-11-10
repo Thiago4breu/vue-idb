@@ -31,13 +31,30 @@ export default class VueIdb {
   }
 
   _initDB (options) {
-    if(!VueIdb._options) VueIdb._options = options
     if(VueIdb._db) return
-    if(!options.schemas){
-      console.error('VueIdb configuration error: schemas must be set')
+    // if(!options.schemas){
+    //   console.error('VueIdb configuration error: schemas must be set')
+    // }
+    let optionsIsArray = Array.isArray(options);
+    if(optionsIsArray) {
+      let defCount = options.length
+      if(!VueIdb._db) {
+        VueIdb._db = new Dexie(options[0].database ? options[0].database : 'database')
+      }
+      options.forEach(version => {
+        dbOpen(VueIdb._db, version.schemas, version.version, false) //don't open until all versions are defined
+      });
+      VueIdb._db.open().catch(function(error){
+        console.error('A IndexedDB error occured', error)
+      })
+      if(!VueIdb._options) VueIdb._options = options[defCount-1] //set latest version options
+    } else {
+      if(!VueIdb._db) {
+        VueIdb._db = new Dexie(options.database ? options.database : 'database')
+      }
+      if(!VueIdb._options) VueIdb._options = options
+      dbOpen(VueIdb._db, options.schemas, options.version ? options.version : 1, true)
     }
-    VueIdb._db = new Dexie(options.database ? options.database : 'database')
-    dbOpen(VueIdb._db, options.schemas, options.version ? options.version : 1)
   }
 
   get plugin () {

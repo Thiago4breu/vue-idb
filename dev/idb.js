@@ -5,7 +5,49 @@ Vue.use(VueIdb)
 
 import axios from 'axios'
 
-export default new VueIdb({
+export default new VueIdb([{
+  version: 3,
+  database: 'bigtest',
+  schemas: [
+    { tests: 'id, title, created_at, updated_at' },
+    { bigs: 'uuid, caption, creation, update' },
+    { dd: 'uuid, caption, creation, update' },
+    { uu: 'uuid, caption, creation' },
+    { surprise: "id, title" }
+  ],
+  options: {
+    tests: { type: 'list', primary: 'id', label: 'title', updated_at: 'updated_at' },
+    bigs: { type: 'biglist', primary: 'uuid', label: 'caption', updated_at: 'update' },
+    dd: { type: 'biglist', primary: 'uuid', label: 'caption', updated_at: 'update' },
+    uu: { type: 'list', primary: 'uuid', label: 'caption' },
+    surprise: { type: 'list', primary: 'id', label: 'title' }
+  },
+  apis: {
+    bigs: {
+      all: () => axios.get('/dev/data/bigdata.json')
+    }
+  }
+},{
+  version: 2,
+  database: 'bigtest',
+  schemas: [
+    { tests: 'id, title, created_at, updated_at' },
+    { bigs: 'uuid, caption, creation, update' },
+    { dd: 'uuid, caption, creation, update' },
+    { uu: 'uuid, caption, creation' }
+  ],
+  options: {
+    tests: { type: 'list', primary: 'id', label: 'title', updated_at: 'updated_at' },
+    bigs: { type: 'biglist', primary: 'uuid', label: 'caption', updated_at: 'update' },
+    dd: { type: 'biglist', primary: 'uuid', label: 'caption', updated_at: 'update' },
+    dd: { type: 'list', primary: 'uuid', label: 'caption' }
+  },
+  apis: {
+    bigs: {
+      all: () => axios.get('/dev/data/bigdata.json')
+    }
+  }
+}, {
   version: 1,
   database: 'bigtest',
   schemas: [
@@ -23,4 +65,4 @@ export default new VueIdb({
       all: () => axios.get('/dev/data/bigdata.json')
     }
   }
-})
+}])

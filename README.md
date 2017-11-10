@@ -30,6 +30,36 @@ IndexedDB wrapper for Vuejs based on Dexie
     render: h => h(App)
   })
   ```
+## Upgrading DB
+  ``` js
+  import Vue from 'vue'
+  import VueIdb from 'vue-idb'
+
+  Vue.use(VueIdb)
+
+  const idb = new VueIdb([{
+    version: 2,
+    database: 'test',
+    schemas: [
+      { tests: 'id, title, created_at, updated_at' },
+      { posts: 'id, owner' },
+      { newSchema: 'id, title' }
+    ]
+  },{
+    version: 1,
+    database: 'test',
+    schemas: [
+      { tests: 'id, title, created_at, updated_at' },
+			{ posts: 'id, owner' }
+    ]
+  }])
+
+  new Vue({
+    el: '#app',
+    idb: idb,
+    render: h => h(App)
+  })
+  ```
 # 0.2.0 BUGFIX
   BUGFIX on adding schemas on existing DB
   UPDATES dependencies #32
