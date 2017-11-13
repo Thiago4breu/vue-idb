@@ -47,7 +47,7 @@ export default class VueIdb {
       VueIdb._db.open().catch(function(error){
         console.error('A IndexedDB error occured', error)
       })
-      if(!VueIdb._options) VueIdb._options = options[defCount-1] //set latest version options
+      if(!VueIdb._options) VueIdb._options = options[0] //set latest version options
     } else {
       if(!VueIdb._db) {
         VueIdb._db = new Dexie(options.database ? options.database : 'database')
