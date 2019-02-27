@@ -1,9 +1,9 @@
 {
   "name": "vue-idb",
-  "version": "0.2.0",
-  "description": "IndexedDB wrapper for Vuejs based on Dexie",
+  "version": "0.2.1",
+  "description": "IndexedDB wrapper for Vuejs based on Dexie with Multiple Versions",
   "main": "dist/index.js",
-  "author": "David Grill <grilldotcom@gmail.com>",
+  "author": "Original Author -> David Grill <grilldotcom@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
