@@ -5,7 +5,7 @@ IndexedDB wrapper for Vuejs based on Dexie
 ## Install
 
   ``` bash
-  npm install vue-idb --save
+  npm install vue-idb-multiversion --save
   ```
 ## Usage
 
@@ -60,6 +60,10 @@ IndexedDB wrapper for Vuejs based on Dexie
     render: h => h(App)
   })
   ```
+# 0.2.1 NPM PACKAGE
+  Created NPM Package for multi versioning only
+  Changes By https://github.com/tartinesKiller/vue-idb
+  
 # 0.2.0 BUGFIX
   BUGFIX on adding schemas on existing DB
   UPDATES dependencies #32
