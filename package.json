@@ -1,5 +1,5 @@
 {
-  "name": "vue-idb",
+  "name": "vue-idb-multiversion",
   "version": "0.2.1",
   "description": "IndexedDB wrapper for Vuejs based on Dexie with Multiple Versions",
   "main": "dist/index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ddgll/vue-idb.git"
+    "url": "git+https://github.com/Thiago4breu/vue-idb.git"
   },
   "keywords": [
     "indexeddb",
